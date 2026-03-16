@@ -137,6 +137,9 @@
       "enabled": true,
       "connectionMode": "websocket",
       "domain": "feishu",
+      "groupPolicy": "open",
+      "dmPolicy": "open",
+      "allowFrom": ["*"],
       "defaultAccount": "bot1",
       "accounts": {
         "bot1": {
@@ -146,13 +149,6 @@
         "bot2": {
           "appId": "cli_a932aa5150789cce",
           "appSecret": "U5XWryR572zgnG6cwqLT1otsntelAUFT"
-        },
-        "default": {
-          "groupPolicy": "open",
-          "dmPolicy": "open",
-          "allowFrom": [
-            "*"
-          ]
         }
       }
     }
