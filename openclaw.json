@@ -1,12 +1,12 @@
 {
   "meta": {
-    "lastTouchedVersion": "2026.3.7",
-    "lastTouchedAt": "2026-03-13T05:15:16.028Z"
+    "lastTouchedVersion": "2026.3.13",
+    "lastTouchedAt": "2026-03-16T15:30:44.498Z"
   },
   "wizard": {
-    "lastRunAt": "2026-03-12T05:49:55.495Z",
-    "lastRunVersion": "2026.3.8",
-    "lastRunCommand": "onboard",
+    "lastRunAt": "2026-03-16T15:30:44.457Z",
+    "lastRunVersion": "2026.3.13",
+    "lastRunCommand": "doctor",
     "lastRunMode": "local"
   },
   "auth": {
@@ -70,13 +70,13 @@
       },
       {
         "id": "Bot1-Agent",
-        "model": "anthropic/claude-sonnet-4-6",
-        "workspace": "/Users/zhangling/.openclaw/workspace-bot1"
+        "workspace": "/Users/zhangling/.openclaw/workspace-bot1",
+        "model": "zai/glm-4.7"
       },
       {
         "id": "Bot2-Agent",
-        "model": "anthropic/claude-sonnet-4-6",
-        "workspace": "/Users/zhangling/.openclaw/workspace-bot2"
+        "workspace": "/Users/zhangling/.openclaw/workspace-bot2",
+        "model": "zai/glm-4.7"
       }
     ]
   },
@@ -88,6 +88,22 @@
       }
     }
   },
+  "bindings": [
+    {
+      "agentId": "Bot1-Agent",
+      "match": {
+        "channel": "feishu",
+        "accountId": "bot1"
+      }
+    },
+    {
+      "agentId": "Bot2-Agent",
+      "match": {
+        "channel": "feishu",
+        "accountId": "bot2"
+      }
+    }
+  ],
   "messages": {
     "tts": {
       "auto": "off",
@@ -121,11 +137,6 @@
       "enabled": true,
       "connectionMode": "websocket",
       "domain": "feishu",
-      "groupPolicy": "open",
-      "dmPolicy": "open",
-      "allowFrom": [
-        "*"
-      ],
       "defaultAccount": "bot1",
       "accounts": {
         "bot1": {
@@ -135,6 +146,13 @@
         "bot2": {
           "appId": "cli_a932aa5150789cce",
           "appSecret": "U5XWryR572zgnG6cwqLT1otsntelAUFT"
+        },
+        "default": {
+          "groupPolicy": "open",
+          "dmPolicy": "open",
+          "allowFrom": [
+            "*"
+          ]
         }
       }
     }
@@ -174,16 +192,6 @@
       ]
     }
   },
-  "bindings": [
-    {
-      "match": { "channel": "feishu", "accountId": "bot1" },
-      "agentId": "Bot1-Agent"
-    },
-    {
-      "match": { "channel": "feishu", "accountId": "bot2" },
-      "agentId": "Bot2-Agent"
-    }
-  ],
   "skills": {
     "entries": {}
   },
