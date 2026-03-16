@@ -1,0 +1,212 @@
+{
+  "meta": {
+    "lastTouchedVersion": "2026.3.7",
+    "lastTouchedAt": "2026-03-13T05:15:16.028Z"
+  },
+  "wizard": {
+    "lastRunAt": "2026-03-12T05:49:55.495Z",
+    "lastRunVersion": "2026.3.8",
+    "lastRunCommand": "onboard",
+    "lastRunMode": "local"
+  },
+  "auth": {
+    "profiles": {
+      "anthropic:default": {
+        "provider": "anthropic",
+        "mode": "api_key"
+      },
+      "minimax:default": {
+        "provider": "minimax",
+        "mode": "api_key"
+      },
+      "zai:default": {
+        "provider": "zai",
+        "mode": "api_key"
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "anthropic/claude-sonnet-4-6"
+      },
+      "models": {
+        "anthropic/claude-sonnet-4-6": {
+          "params": {
+            "cacheRetention": "short"
+          }
+        },
+        "anthropic/claude-opus-4-6": {
+          "params": {
+            "cacheRetention": "short"
+          }
+        },
+        "minimax/MiniMax-M2.5": {
+          "alias": "minimax"
+        },
+        "zai/glm-4-plus": {
+          "alias": "glm"
+        },
+        "zai/glm-4.7": {},
+        "zai/glm-z1-plus": {},
+        "zai/glm-4-flash": {}
+      },
+      "workspace": "/Users/zhangling/.openclaw/workspace",
+      "contextPruning": {
+        "mode": "cache-ttl",
+        "ttl": "1h"
+      },
+      "compaction": {
+        "mode": "safeguard"
+      },
+      "heartbeat": {
+        "every": "30m"
+      }
+    },
+    "list": [
+      {
+        "id": "main",
+        "model": "anthropic/claude-sonnet-4-6"
+      },
+      {
+        "id": "Bot1-Agent",
+        "model": "anthropic/claude-sonnet-4-6",
+        "workspace": "/Users/zhangling/.openclaw/workspace-bot1"
+      },
+      {
+        "id": "Bot2-Agent",
+        "model": "anthropic/claude-sonnet-4-6",
+        "workspace": "/Users/zhangling/.openclaw/workspace-bot2"
+      }
+    ]
+  },
+  "tools": {
+    "profile": "coding",
+    "web": {
+      "search": {
+        "enabled": false
+      }
+    }
+  },
+  "messages": {
+    "tts": {
+      "auto": "off",
+      "provider": "edge"
+    }
+  },
+  "commands": {
+    "native": "auto",
+    "nativeSkills": "auto",
+    "bash": false,
+    "config": false,
+    "debug": false,
+    "restart": false,
+    "ownerDisplay": "raw",
+    "allowFrom": {
+      "*": [
+        "ou_065179232cd557968f62533ca275d842",
+        "openclaw-control-ui"
+      ],
+      "feishu": [
+        "ou_065179232cd557968f62533ca275d842",
+        "ou_9401afd2cd15a48d605eae71d1d1699f"
+      ]
+    }
+  },
+  "session": {
+    "dmScope": "per-channel-peer"
+  },
+  "channels": {
+    "feishu": {
+      "enabled": true,
+      "connectionMode": "websocket",
+      "domain": "feishu",
+      "groupPolicy": "open",
+      "dmPolicy": "open",
+      "allowFrom": [
+        "*"
+      ],
+      "defaultAccount": "bot1",
+      "accounts": {
+        "bot1": {
+          "appId": "cli_a939267e7ff81cc8",
+          "appSecret": "Dgac0i0GDg616FcRAoCsJgTOM1Gckktm"
+        },
+        "bot2": {
+          "appId": "cli_a932aa5150789cce",
+          "appSecret": "U5XWryR572zgnG6cwqLT1otsntelAUFT"
+        }
+      }
+    }
+  },
+  "gateway": {
+    "port": 18789,
+    "mode": "local",
+    "bind": "loopback",
+    "controlUi": {
+      "allowedOrigins": [
+        "http://localhost:18789",
+        "http://127.0.0.1:18789"
+      ],
+      "allowInsecureAuth": true,
+      "dangerouslyDisableDeviceAuth": true
+    },
+    "auth": {
+      "mode": "token",
+      "token": "zhangling"
+    },
+    "tailscale": {
+      "mode": "off",
+      "resetOnExit": false
+    },
+    "remote": {
+      "transport": "direct"
+    },
+    "nodes": {
+      "denyCommands": [
+        "camera.snap",
+        "camera.clip",
+        "screen.record",
+        "contacts.add",
+        "calendar.add",
+        "reminders.add",
+        "sms.send"
+      ]
+    }
+  },
+  "bindings": [
+    {
+      "match": { "channel": "feishu", "accountId": "bot1" },
+      "agentId": "Bot1-Agent"
+    },
+    {
+      "match": { "channel": "feishu", "accountId": "bot2" },
+      "agentId": "Bot2-Agent"
+    }
+  ],
+  "skills": {
+    "entries": {}
+  },
+  "plugins": {
+    "entries": {
+      "feishu": {
+        "enabled": true
+      }
+    },
+    "installs": {
+      "feishu": {
+        "source": "npm",
+        "spec": "@openclaw/feishu",
+        "installPath": "/Users/zhangling/.openclaw/extensions/feishu",
+        "version": "2026.3.12",
+        "resolvedName": "@openclaw/feishu",
+        "resolvedVersion": "2026.3.12",
+        "resolvedSpec": "@openclaw/feishu@2026.3.12",
+        "integrity": "sha512-IoPDiOp2jyOE+pv5fJuwwkTK4aWc1NhzTrIzROkdMnxuga/H/KgRqZq8cWwZ34O7tuZBj2ln1xSDzaup+CMV3g==",
+        "shasum": "97d66db8ad949546ddf8e5e8b4b8ebe6f57beb96",
+        "resolvedAt": "2026-03-13T05:15:08.414Z",
+        "installedAt": "2026-03-13T05:15:15.979Z"
+      }
+    }
+  }
+}
