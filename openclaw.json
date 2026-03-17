@@ -1,13 +1,20 @@
 {
   "meta": {
     "lastTouchedVersion": "2026.3.13",
-    "lastTouchedAt": "2026-03-16T15:30:44.498Z"
+    "lastTouchedAt": "2026-03-17T06:05:07.684Z"
   },
   "wizard": {
-    "lastRunAt": "2026-03-16T15:30:44.457Z",
+    "lastRunAt": "2026-03-17T06:05:07.630Z",
     "lastRunVersion": "2026.3.13",
     "lastRunCommand": "doctor",
     "lastRunMode": "local"
+  },
+  "secrets": {
+    "providers": {
+      "default": {
+        "source": "env"
+      }
+    }
   },
   "auth": {
     "profiles": {
@@ -21,6 +28,10 @@
       },
       "zai:default": {
         "provider": "zai",
+        "mode": "api_key"
+      },
+      "openai:default": {
+        "provider": "openai",
         "mode": "api_key"
       }
     }
@@ -49,7 +60,8 @@
         },
         "zai/glm-4.7": {},
         "zai/glm-z1-plus": {},
-        "zai/glm-4-flash": {}
+        "zai/glm-4-flash": {},
+        "openai/gpt-5.4": {}
       },
       "workspace": "/Users/zhangling/.openclaw/workspace",
       "contextPruning": {
@@ -71,12 +83,12 @@
       {
         "id": "Bot1-Agent",
         "workspace": "/Users/zhangling/.openclaw/workspace-bot1",
-        "model": "zai/glm-4.7"
+        "model": "openai/gpt-5.4"
       },
       {
         "id": "Bot2-Agent",
         "workspace": "/Users/zhangling/.openclaw/workspace-bot2",
-        "model": "zai/glm-4.7"
+        "model": "openai/gpt-5.4"
       }
     ]
   },
@@ -137,11 +149,11 @@
       "enabled": true,
       "connectionMode": "websocket",
       "domain": "feishu",
-      "groupPolicy": "open",
-      "dmPolicy": "open",
-      "allowFrom": ["*"],
       "defaultAccount": "bot1",
-      "accounts": {
+      "groupPolicy": "open",
+    "dmPolicy": "open",
+    "allowFrom": ["*"],
+    "accounts": {
         "bot1": {
           "appId": "cli_a939267e7ff81cc8",
           "appSecret": "Dgac0i0GDg616FcRAoCsJgTOM1Gckktm"
